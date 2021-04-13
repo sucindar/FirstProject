@@ -22,7 +22,7 @@ public class pangram {
         for (String strPan : Plist) {
             boolean[] arrayTest = new boolean[26];
             int index = 0;
-            
+
             System.out.println(strPan);
             for (int j = 0; j < strPan.length(); j++) {
                 //check with char decimal
