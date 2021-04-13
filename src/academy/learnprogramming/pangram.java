@@ -11,42 +11,40 @@ public class pangram {
         //PList.add("Waltz, bad nymph, for quick jigs vex");
         PList.add("Come");
         //PList.add("Jived fox nymph grabs quick waltz");
-        PangramCheck(PList);
+        String strResult = PangramCheck(PList);
+        System.out.println(strResult);
     }
 
     public static String PangramCheck(ArrayList<String> Plist){
 
-        String strResult = "0";
-        for (int i=0; i < Plist.size();i++)
-        {
+        String strResult = "";
+        int intResult = 1;
+        for (String strPan : Plist) {
             boolean[] arrayTest = new boolean[26];
-            int index =0;
-            int intResult = 1;
-            String strPan = Plist.get(i);
+            int index = 0;
+            
             System.out.println(strPan);
-            for (int j=0; j < strPan.length();j++){
-                if (strPan.charAt(j) >= 'A' && strPan.charAt(j) <= 'Z'){
+            for (int j = 0; j < strPan.length(); j++) {
+                //check with char decimal
+                if (strPan.charAt(j) >= 'A' && strPan.charAt(j) <= 'Z') {
                     index = strPan.charAt(j) - 'A';
-                }
-                else if (strPan.charAt(j) >= 'a' && strPan.charAt(j) <= 'z'){
+                } else if (strPan.charAt(j) >= 'a' && strPan.charAt(j) <= 'z') {
                     index = strPan.charAt(j) - 'a';
                 }
                 //System.out.println("index "+index);
                 arrayTest[index] = true;
             }
-            for (int k=0; k < 25;k++){
-                if (arrayTest[k] == true) {
+            for (int k = 0; k < 25; k++) {
+                if (arrayTest[k]) {
                     intResult = 0;
-                }
-                else {
+                } else {
                     intResult = 1;
                 }
             }
-            if(intResult == 0) {
-                System.out.println("This is a pangram");
-            }
-            else {
-                System.out.println("This is NOT a pangram");
+            if (intResult == 0) {
+                strResult = "This is a pangram";
+            } else {
+                strResult = "This is NOT a pangram";
             }
         }
         return strResult;
